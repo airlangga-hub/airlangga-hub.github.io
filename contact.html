@@ -130,7 +130,7 @@
                         <div
                             class="card border-0 shadow-sm rounded-4 p-4 p-md-5"
                         >
-                            <form>
+                            <form id="contactForm">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label fw-medium"
@@ -138,6 +138,7 @@
                                         >
                                         <input
                                             type="text"
+                                            id="userName"
                                             class="form-control form-control-lg"
                                             placeholder="John Doe"
                                             required
@@ -149,6 +150,7 @@
                                         >
                                         <input
                                             type="email"
+                                            id="userEmail"
                                             class="form-control form-control-lg"
                                             placeholder="john@example.com"
                                             required
@@ -161,6 +163,7 @@
                                     >
                                     <input
                                         type="text"
+                                        id="userSubject"
                                         class="form-control form-control-lg"
                                         placeholder="How can we help?"
                                         required
@@ -171,6 +174,7 @@
                                         >Message</label
                                     >
                                     <textarea
+                                        id="userMessage"
                                         class="form-control form-control-lg"
                                         rows="5"
                                         placeholder="Write your message here..."
@@ -270,37 +274,5 @@
                 </div>
             </div>
         </footer>
-
-        <script>
-            document
-                .getElementById("contactForm")
-                .addEventListener("submit", function (e) {
-                    e.preventDefault(); // Stop the page from refreshing
-
-                    // 1. Get values from the inputs
-                    const name = document.getElementById("userName").value;
-                    const email = document.getElementById("userEmail").value;
-                    const subject =
-                        document.getElementById("userSubject").value;
-                    const message =
-                        document.getElementById("userMessage").value;
-
-                    // 2. Set the destination email
-                    const destination = "info@airlanggastore.com";
-
-                    // 3. Construct the email body (using %0D%0A for line breaks)
-                    const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-
-                    // 4. Construct the full Mailto URL
-                    const mailtoUrl = `mailto:${destination}?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
-
-                    // 5. Open in a NEW TAB
-                    window.open(mailtoUrl, "_blank");
-
-                    // 6. Visual feedback for the user
-                    alert("Opening your email application in a new tab...");
-                    this.reset(); // Clear the form
-                });
-        </script>
     </body>
 </html>
