@@ -270,5 +270,37 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            document
+                .getElementById("contactForm")
+                .addEventListener("submit", function (e) {
+                    e.preventDefault(); // Stop the page from refreshing
+
+                    // 1. Get values from the inputs
+                    const name = document.getElementById("userName").value;
+                    const email = document.getElementById("userEmail").value;
+                    const subject =
+                        document.getElementById("userSubject").value;
+                    const message =
+                        document.getElementById("userMessage").value;
+
+                    // 2. Set the destination email
+                    const destination = "info@airlanggastore.com";
+
+                    // 3. Construct the email body (using %0D%0A for line breaks)
+                    const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+                    // 4. Construct the full Mailto URL
+                    const mailtoUrl = `mailto:${destination}?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+
+                    // 5. Open in a NEW TAB
+                    window.open(mailtoUrl, "_blank");
+
+                    // 6. Visual feedback for the user
+                    alert("Opening your email application in a new tab...");
+                    this.reset(); // Clear the form
+                });
+        </script>
     </body>
 </html>
