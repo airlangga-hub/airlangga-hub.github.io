@@ -68,12 +68,16 @@
             <div class="container">
                 <div class="row">
                     <aside class="col-lg-3 mb-4">
-                        <div class="card border-0 shadow-sm p-4 rounded-4">
+                        <div
+                            class="card border-0 shadow-sm p-4 rounded-4 sticky-top"
+                            style="top: 20px"
+                        >
                             <h5 class="fw-bold mb-3">Categories</h5>
                             <div class="form-check mb-2">
                                 <input
-                                    class="form-check-input"
+                                    class="form-check-input filter-category"
                                     type="checkbox"
+                                    value="electronics"
                                     id="cat1"
                                 />
                                 <label class="form-check-label" for="cat1"
@@ -82,8 +86,9 @@
                             </div>
                             <div class="form-check mb-2">
                                 <input
-                                    class="form-check-input"
+                                    class="form-check-input filter-category"
                                     type="checkbox"
+                                    value="fashion"
                                     id="cat2"
                                 />
                                 <label class="form-check-label" for="cat2"
@@ -92,8 +97,9 @@
                             </div>
                             <div class="form-check mb-4">
                                 <input
-                                    class="form-check-input"
+                                    class="form-check-input filter-category"
                                     type="checkbox"
+                                    value="home"
                                     id="cat3"
                                 />
                                 <label class="form-check-label" for="cat3"
@@ -107,14 +113,27 @@
                                 class="form-range"
                                 min="0"
                                 max="5000000"
+                                step="100000"
+                                value="5000000"
                                 id="priceRange"
                             />
                             <div
                                 class="d-flex justify-content-between small text-muted"
                             >
                                 <span>Rp 0</span>
-                                <span>Rp 5jt+</span>
+                                <span
+                                    id="priceLabel"
+                                    class="fw-bold text-primary"
+                                    >Rp 5.000.000</span
+                                >
                             </div>
+
+                            <button
+                                class="btn btn-sm btn-link text-decoration-none mt-3 p-0"
+                                id="resetFilters"
+                            >
+                                Reset Filters
+                            </button>
                         </div>
                     </aside>
 
@@ -123,17 +142,17 @@
                             class="d-flex justify-content-between align-items-center mb-4"
                         >
                             <h2 class="fw-bold m-0">All Products</h2>
-                            <select
-                                class="form-select w-auto border-0 shadow-sm"
-                            >
-                                <option>Newest</option>
-                                <option>Price: Low to High</option>
-                                <option>Price: High to Low</option>
-                            </select>
+                            <p class="text-muted m-0" id="resultsCount">
+                                Showing all products
+                            </p>
                         </div>
 
-                        <div class="row g-4">
-                            <div class="col-md-4">
+                        <div class="row g-4" id="productGrid">
+                            <div
+                                class="col-md-4 product-item"
+                                data-category="fashion"
+                                data-price="2100000"
+                            >
                                 <div
                                     class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
                                 >
@@ -141,13 +160,11 @@
                                         <img
                                             src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1099&auto=format&fit=crop"
                                             class="object-fit-cover"
-                                            alt="Product"
+                                            alt="Sunglasses"
                                         />
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-muted mb-1">
-                                            Fashion
-                                        </h6>
+                                        <h6 class="text-muted mb-1">Fashion</h6>
                                         <h5 class="card-title fw-bold">
                                             Sunglasses
                                         </h5>
@@ -163,7 +180,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div
+                                class="col-md-4 product-item"
+                                data-category="electronics"
+                                data-price="1500000"
+                            >
                                 <div
                                     class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
                                 >
@@ -171,7 +192,7 @@
                                         <img
                                             src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1099&auto=format&fit=crop"
                                             class="object-fit-cover"
-                                            alt="Product"
+                                            alt="Smart Watch"
                                         />
                                     </div>
                                     <div class="card-body">
@@ -193,7 +214,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div
+                                class="col-md-4 product-item"
+                                data-category="electronics"
+                                data-price="2250000"
+                            >
                                 <div
                                     class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
                                 >
@@ -201,11 +226,13 @@
                                         <img
                                             src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1470&auto=format&fit=crop"
                                             class="object-fit-cover"
-                                            alt="Product"
+                                            alt="Headphones"
                                         />
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-muted mb-1">Electronics</h6>
+                                        <h6 class="text-muted mb-1">
+                                            Electronics
+                                        </h6>
                                         <h5 class="card-title fw-bold">
                                             Premium Headphones
                                         </h5>
@@ -221,35 +248,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div
-                                    class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
-                                >
-                                    <div class="ratio ratio-1x1">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1470&auto=format&fit=crop"
-                                            class="object-fit-cover"
-                                            alt="Product"
-                                        />
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 class="text-muted mb-1">Electronics</h6>
-                                        <h5 class="card-title fw-bold">
-                                            Polaroid
-                                        </h5>
-                                        <p class="fw-bold text-primary mb-3">
-                                            Rp 3.000.000
-                                        </p>
-                                        <button
-                                            class="btn btn-outline-primary w-100 rounded-pill"
-                                        >
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-4">
+                            <div
+                                class="col-md-4 product-item"
+                                data-category="home"
+                                data-price="1800000"
+                            >
                                 <div
                                     class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
                                 >
@@ -257,11 +260,13 @@
                                         <img
                                             src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1974&auto=format&fit=crop"
                                             class="object-fit-cover"
-                                            alt="Product"
+                                            alt="Chair"
                                         />
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-muted mb-1">Home & Living</h6>
+                                        <h6 class="text-muted mb-1">
+                                            Home & Living
+                                        </h6>
                                         <h5 class="card-title fw-bold">
                                             Chair
                                         </h5>
@@ -276,8 +281,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-md-4">
+
+                            <div
+                                class="col-md-4 product-item"
+                                data-category="home"
+                                data-price="300000"
+                            >
                                 <div
                                     class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
                                 >
@@ -285,11 +294,13 @@
                                         <img
                                             src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=687&auto=format&fit=crop"
                                             class="object-fit-cover"
-                                            alt="Product"
+                                            alt="Bottle"
                                         />
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="text-muted mb-1">Home & Living</h6>
+                                        <h6 class="text-muted mb-1">
+                                            Home & Living
+                                        </h6>
                                         <h5 class="card-title fw-bold">
                                             Water Bottle
                                         </h5>
@@ -304,90 +315,121 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div
+                                class="col-md-4 product-item"
+                                data-category="home"
+                                data-price="300000"
+                            >
+                                <div
+                                    class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
+                                >
+                                    <div class="ratio ratio-1x1">
+                                        <img
+                                            src="https://images.unsplash.com/photo-1740711152088-88a009e877bb?q=80&w=880&auto=format&fit=crop"
+                                            class="object-fit-cover"
+                                            alt="Bottle"
+                                        />
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="text-muted mb-1">
+                                            Fashion
+                                        </h6>
+                                        <h5 class="card-title fw-bold">
+                                            Men Shirt
+                                        </h5>
+                                        <p class="fw-bold text-primary mb-3">
+                                            Rp 900.000
+                                        </p>
+                                        <button
+                                            class="btn btn-outline-primary w-100 rounded-pill"
+                                        >
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="noResults" class="text-center py-5 d-none">
+                            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                            <h4>No products found</h4>
+                            <p class="text-muted">
+                                Try adjusting your filters or price range.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- footer -->
-        <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h5 class="fw-bold mb-4">Quick Links</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <a
-                                    href="index.html"
-                                    class="text-decoration-none"
-                                    >Home</a
-                                >
-                            </li>
-                            <li class="mb-2">
-                                <a
-                                    href="products.html"
-                                    class="text-decoration-none"
-                                    >Products</a
-                                >
-                            </li>
-                            <li class="mb-2">
-                                <a
-                                    href="gallery.html"
-                                    class="text-decoration-none"
-                                    >Gallery</a
-                                >
-                            </li>
-                            <li class="mb-2">
-                                <a
-                                    href="about.html"
-                                    class="text-decoration-none"
-                                    >About Us</a
-                                >
-                            </li>
-                            <li class="mb-2">
-                                <a
-                                    href="contact.html"
-                                    class="text-decoration-none"
-                                    >Contact</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h5 class="fw-bold mb-4">Contact Info</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-3 d-flex">
-                                <i
-                                    class="fas fa-map-marker-alt me-3 mt-1 text-primary"
-                                ></i>
-                                <span
-                                    >Jl. E-commerce No. 123, Jakarta Pusat, DKI
-                                    Jakarta</span
-                                >
-                            </li>
-                            <li class="mb-3 d-flex">
-                                <i
-                                    class="fas fa-phone-alt me-3 mt-1 text-primary"
-                                ></i>
-                                <span>(021) 1234-5678</span>
-                            </li>
-                            <li class="mb-3 d-flex">
-                                <i
-                                    class="fas fa-envelope me-3 mt-1 text-primary"
-                                ></i>
-                                <span>info@airlanggastore.com</span>
-                            </li>
-                            <li class="mb-3 d-flex">
-                                <i
-                                    class="fas fa-clock me-3 mt-1 text-primary"
-                                ></i>
-                                <span>Mon-Sat: 8AM - 9PM, Sun: 9AM - 6PM</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <footer class="bg-dark text-white pt-5 pb-4 mt-auto"></footer>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const categoryCheckboxes =
+                    document.querySelectorAll(".filter-category");
+                const priceRange = document.getElementById("priceRange");
+                const priceLabel = document.getElementById("priceLabel");
+                const products = document.querySelectorAll(".product-item");
+                const resetBtn = document.getElementById("resetFilters");
+                const noResults = document.getElementById("noResults");
+                const resultsCount = document.getElementById("resultsCount");
+
+                function filterProducts() {
+                    const maxPrice = parseInt(priceRange.value);
+                    priceLabel.textContent = `Rp ${maxPrice.toLocaleString("id-ID")}`;
+
+                    // Get list of checked categories
+                    const activeCategories = Array.from(categoryCheckboxes)
+                        .filter((cb) => cb.checked)
+                        .map((cb) => cb.value);
+
+                    let visibleCount = 0;
+
+                    products.forEach((product) => {
+                        const productCat =
+                            product.getAttribute("data-category");
+                        const productPrice = parseInt(
+                            product.getAttribute("data-price"),
+                        );
+
+                        // Logic: (No categories selected OR matches selected) AND (Price is within range)
+                        const categoryMatch =
+                            activeCategories.length === 0 ||
+                            activeCategories.includes(productCat);
+                        const priceMatch = productPrice <= maxPrice;
+
+                        if (categoryMatch && priceMatch) {
+                            product.classList.remove("d-none");
+                            visibleCount++;
+                        } else {
+                            product.classList.add("d-none");
+                        }
+                    });
+
+                    // UI Updates
+                    resultsCount.textContent = `Showing ${visibleCount} products`;
+                    if (visibleCount === 0) {
+                        noResults.classList.remove("d-none");
+                    } else {
+                        noResults.classList.add("d-none");
+                    }
+                }
+
+                // Listen for changes
+                categoryCheckboxes.forEach((cb) =>
+                    cb.addEventListener("change", filterProducts),
+                );
+                priceRange.addEventListener("input", filterProducts);
+
+                // Reset logic
+                resetBtn.addEventListener("click", () => {
+                    categoryCheckboxes.forEach((cb) => (cb.checked = false));
+                    priceRange.value = 5000000;
+                    filterProducts();
+                });
+            });
+        </script>
     </body>
 </html>
