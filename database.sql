@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO users
 (first_name, last_name, email, password)
 VALUES
-('John', 'Doe', 'john@gmail.com', 'password12345');
+(?, ?, ?, ?);
 
 -- login
 SELECT
