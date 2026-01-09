@@ -3,6 +3,19 @@ CREATE DATABASE IF NOT EXISTS airlangga_db;
 
 USE airlangga_db;
 
+CREATE TABLE IF NOT EXISTS messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    subject VARCHAR(255) NOT NULL,
+    message VARCHAR(255) NOT NULL,
+);
+
+INSERT INTO messages
+(full_name, email, subject, message)
+VALUES
+(?, ?, ?, ?);
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
@@ -26,7 +39,7 @@ SELECT
 FROM users
 WHERE
     email = ?;
-    
+
 -- update
 UPDATE users
 SET password = ?
