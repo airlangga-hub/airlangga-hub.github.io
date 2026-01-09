@@ -31,3 +31,7 @@ WHERE
 UPDATE users
 SET password = ?
 WHERE email = ?;
+
+-- delete
+DELETE FROM users
+WHERE email = ?;
