@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airlangga Krishna | Software Engineer</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --bg-light: #f8fafc;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border: 5px solid white;
+            border-radius: 50%;
+            object-fit: cover;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: transform 0.2s, opacity 0.2s;
+            opacity: 0.9;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            opacity: 1;
+            color: #fff;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: none;
+            transition: transform 0.2s;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            border-bottom: 3px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-badge {
+            background: #eff6ff;
+            color: var(--primary-color);
+            border: 1px solid #bfdbfe;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0.25rem;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        
+        .skill-badge:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .project-card {
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.2s;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        
+        .tech-stack span {
+            background: #f1f5f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin: 0.15rem;
+            display: inline-block;
+            color: #475569;
+        }
+        
+        .cert-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        
+        .cert-link:hover {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+        
+        .cert-link i {
+            font-size: 0.9rem;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 1.2rem;
+            width: 2px;
+            height: calc(100% + 0.5rem);
+            background: #e2e8f0;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .date-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: #475569;
+        }
+        
+        .contact-item i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn-github {
+            background: #24292f;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+        
+        .btn-github:hover {
+            background: #1a1e22;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                padding: 2rem 0;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="profile-header text-center">
+        <div class="container">
+            <div class="profile-avatar">
+                 <img src="foto.jpg" alt="Airlangga Krishna" class="avatar-img">
+            </div>
+            <h1 class="display-5 fw-bold mb-2">Airlangga Krishna</h1>
+            <p class="lead mb-3 opacity-75">Software Engineer</p>
+            
+            <div class="social-links mb-4">
+                <a href="https://www.linkedin.com/in/airlangga-krishna-a305a120b" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/airlangga-hub" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:airlanggakrishna@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+6281389212201" title="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+            
+            <div class="contact-info text-white opacity-90">
+                <p class="mb-1"><i class="fas fa-phone me-2"></i>+62 813-8921-2201</p>
+                <p class="mb-0"><i class="fas fa-envelope me-2"></i>airlanggakrishna@gmail.com</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container pb-5">
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-lg-4">
+                <!-- Skills Section -->
+                <div class="section-card">
+                    <h3 class="section-title"><i class="fas fa-code"></i> Skills</h3>
+                    
+                    <h6 class="fw-semibold mb-2">Programming Languages</h6>
+                    <div class="mb-3">
+                        <span class="skill-badge">Go</span>
+                        <span class="skill-badge">Python</span>
+                    </div>
+                    
+                    <h6 class="fw-semibold mb-2">Backend Development</h6>
+                    <div class="mb-3">
+                        <span class="skill-badge">REST API</span>
+                        <span class="skill-badge">gRPC</span>
+                        <span class="skill-badge">RabbitMQ</span>
+                        <span class="skill-badge">Elastic Search</span>
+                        <span class="skill-badge">Docker</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">Microservices</span>
+                        <span class="skill-badge">Pub/Sub</span>
+                        <span class="skill-badge">Monolithic</span>
+                    </div>
+                    
+                    <h6 class="fw-semibold mb-2">AI/ML</h6>
+                    <div class="mb-3">
+                        <span class="skill-badge">MLOps</span>
+                        <span class="skill-badge">Vector Database</span>
+                        <span class="skill-badge">RAG</span>
+                        <span class="skill-badge">LLM</span>
+                    </div>
+                    
+                    <h6 class="fw-semibold mb-2">English Proficiency</h6>
+                    <div>
+                        <a href="https://drive.google.com/file/d/1rPcy9s8z8eSNZxqVRuE26NfR7BXsEjlr/view" target="_blank" class="cert-link">
+                            <i class="fas fa-certificate"></i> TOEFL ITP (617)
+                        </a>
+                        <a href="https://drive.google.com/file/d/1XwnEgm3S2kxnldJHjD-M2cY1O1K4M9JQ/view" target="_blank" class="cert-link">
+                            <i class="fas fa-certificate"></i> EF SET C2 Proficient (73/100)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="section-card">
+                    <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="date-badge">Dec 2025 - Apr 2026</span>
+                        <h6 class="fw-semibold mb-1">Backend Golang</h6>
+                        <p class="mb-1 text-secondary">Hacktiv8</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="date-badge">Aug 2014 - Dec 2020</span>
+                        <h6 class="fw-semibold mb-1">Bachelor of Engineering - Industrial Engineering</h6>
+                        <p class="mb-1 text-secondary">University of Brawijaya</p>
+                        <p class="mb-0 small">GPA: 3.14/4.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-lg-8">
+                <!-- Projects Section -->
+                <div class="section-card">
+                    <h3 class="section-title"><i class="fas fa-laptop-code"></i> Projects</h3>
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap">
+                            <div>
+                                <h5 class="fw-semibold mb-1">Microservices + Pub/Sub</h5>
+                                <p class="text-secondary small mb-2">Go-based microservices e-commerce platform</p>
+                            </div>
+                            <a href="https://github.com/airlangga-hub/microservices" target="_blank" class="btn-github btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <div class="tech-stack mb-2">
+                            <span>Go</span><span>gRPC</span><span>Elastic Search</span>
+                            <span>RabbitMQ</span><span>Docker</span><span>PostgreSQL</span>
+                        </div>
+                        <p class="mb-0 small">Features include automated order confirmation email triggered via asynchronous messaging and high-performance product discovery using Elasticsearch.</p>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap">
+                            <div>
+                                <h5 class="fw-semibold mb-1">WhatsApp AI Agents</h5>
+                                <p class="text-secondary small mb-2">AI Chatbot powered by Llama 3.3 70b</p>
+                            </div>
+                            <a href="https://github.com/airlangga-hub/coffeeshop-ai-agents" target="_blank" class="btn-github btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <div class="tech-stack mb-2">
+                            <span>Pinecone</span><span>Groq API</span><span>Sentence Transformers</span>
+                            <span>mlxtend</span><span>ngrok</span><span>Meta API</span>
+                        </div>
+                        <p class="mb-0 small">5-agent backend: Guard for filtering, Classifier for routing, Details agent with RAG for shop info, Recommendation agent with Market Basket Analysis, and dedicated Order agent.</p>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap">
+                            <div>
+                                <h5 class="fw-semibold mb-1">E-Commerce Server</h5>
+                                <p class="text-secondary small mb-2">High-performance Go Fiber backend</p>
+                            </div>
+                            <a href="https://github.com/airlangga-hub/ecommerce-go" target="_blank" class="btn-github btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <div class="tech-stack mb-2">
+                            <span>Go Fiber</span><span>Docker</span><span>PostgreSQL</span>
+                            <span>GORM</span><span>Stripe API</span>
+                        </div>
+                        <p class="mb-0 small">E-commerce backend integrated with Stripe using hexagonal architectural pattern.</p>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card p-3">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap">
+                            <div>
+                                <h5 class="fw-semibold mb-1">Chirpy Go</h5>
+                                <p class="text-secondary small mb-2">Social media backend inspired by Twitter</p>
+                            </div>
+                            <a href="https://github.com/airlangga-hub/chirpy-go" target="_blank" class="btn-github btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <div class="tech-stack mb-2">
+                            <span>PostgreSQL</span><span>sqlc</span><span>Goose</span>
+                        </div>
+                        <p class="mb-0 small">Backend server where users can post short messages called "chirps".</p>
+                    </div>
+                </div>
+
+                <!-- Work Experience Section -->
+                <div class="section-card">
+                    <h3 class="section-title"><i class="fas fa-briefcase"></i> Work Experience</h3>
+                    
+                    <div class="timeline-item">
+                        <span class="date-badge">Sep 2021 - Aug 2023</span>
+                        <h5 class="fw-semibold mb-1">Purchase Quality and Delivery (Staff)</h5>
+                        <p class="text-primary fw-medium mb-2">Yamaha Indonesia Motor Manufacturing</p>
+                        <ul class="mb-0 small">
+                            <li>Managed quality assurance for CKD parts shipment to international markets (Malaysia, Thailand, Vietnam, China, Japan, Italy, France, Brazil, Colombia)</li>
+                            <li>Handled customer complaints through proactive defect detection and immediate corrective actions at receiving inspection</li>
+                            <li>Conducted root cause analysis and implemented process improvements at 30+ supplier facilities</li>
+                            <li>Standardized quality documentation across supplier networks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Certifications Section -->
+                <div class="section-card">
+                    <h3 class="section-title"><i class="fas fa-award"></i> Certifications</h3>
+                    
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <a href="https://www.boot.dev/certificates/148f1202-5d52-4127-8014-5ed7fe231799" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Boot.dev: Learn Go
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://www.boot.dev/certificates/f723c6ae-59a0-42ba-a73f-93e690437f36" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Boot.dev: Data Structures & Algorithms
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://www.boot.dev/certificates/f2fecd36-c11b-4e9d-bb6f-eddf4cd82df3" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Boot.dev: Learn Docker
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://www.boot.dev/certificates/d04a08e0-47c7-4095-83eb-af55026178f5" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Boot.dev: Learn SQL
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://www.boot.dev/certificates/f72f61ab-fc9f-4e28-a6c4-85a76bac70bf" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Boot.dev: Learn Git
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://dibimbing-lms-dev.s3.ap-southeast-1.amazonaws.com/production/bootcamp_643/201029ML060925/64985" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Dibimbing.id: AI & Machine Learning
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="https://certificates.mavenanalytics.io/54412654-fd6c-4c86-acc5-702a9129f3e9#acc.4mdU6bf8" target="_blank" class="cert-link">
+                                <i class="fas fa-external-link-alt"></i> Maven Analytics: Python for Data Science
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0 small">© 2026 Airlangga Krishna. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
